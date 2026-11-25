@@ -2,7 +2,7 @@ services:
   - type: web
     runtime: static
     name: birch-demo-brand
-    branch: main
+    branch: birch
     buildCommand: node brands/birch/build.mjs
     staticPublishPath: ./brands/birch/dist
     headers:
