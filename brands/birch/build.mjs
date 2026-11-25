@@ -10,7 +10,7 @@ if (!domain || !/^(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/i.test(domain
 const brandDomain = domain.toLowerCase();
 const entry = {
   '@context': { osd: 'https://opensupport.directory/ns#' },
-  identifier: `urn:air:${brandDomain}:support:mcp-server`,
+  identifier: 'urn:air:z3nbirch.zendesk.com:64e71deb-4796-4c46-b077-583820832d1b:support:mcp-server',
   displayName: 'Birch Customer Support',
   type: 'application/mcp-server-card+json',
   url: 'https://z3nbirch.zendesk.com/api/mcp/server-card',
