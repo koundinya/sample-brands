@@ -8,6 +8,7 @@ Create a **new Static Site** from this repository. Keep the existing sample depl
 
 | Setting | Value |
 | --- | --- |
+| Name | `birch-demo` |
 | Branch | `birch` |
 | Root directory | Leave blank |
 | Build command | `node brands/birch/build.mjs` |
