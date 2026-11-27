@@ -23,8 +23,27 @@ const entry = {
   'osd:brandName': 'Birch',
   'osd:brandDomain': brandDomain,
 };
+const poppyEntry = {
+  ...entry,
+  '@context': { osd: 'https://openservicedirectory.org/ns#' },
+  identifier: `urn:air:${brandDomain}:support:poppy`,
+  type: 'application/poppy+json',
+  url: `https://${brandDomain}/.well-known/poppy.json`,
+};
+// Match the existing signed-out Zendesk integration. Do not advertise sign-in
+// or a separate Poppy conversation endpoint that the service does not provide.
+const poppy = {
+  protocol_version: '1.0',
+  organization: { name: 'Birch', domain: brandDomain },
+  apis: [{
+    type: 'mcp',
+    url: 'https://z3nbirch.zendesk.com/api/mcp',
+    description: entry.description,
+  }],
+};
 const output = join(root, 'dist');
 cpSync(join(root, 'public'), output, { recursive: true });
 mkdirSync(join(output, '.well-known'), { recursive: true });
-writeFileSync(join(output, '.well-known/ard.json'), JSON.stringify({ specVersion: '1.0', entries: [entry] }, null, 2) + '\n');
+writeFileSync(join(output, '.well-known/ard.json'), JSON.stringify({ specVersion: '1.0', entries: [entry, poppyEntry] }, null, 2) + '\n');
 console.log(`Built Birch website and ARD for https://${brandDomain}`);
+writeFileSync(join(output, '.well-known/poppy.json'), JSON.stringify(poppy, null, 2) + '\n');
